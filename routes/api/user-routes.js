@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-// GET /api/users/1
+// GET one user
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
       });
   });
 
-// POST /api/users
+// POST create user
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     User.create({
@@ -50,6 +50,7 @@ router.post('/', (req, res) => {
       });
 });
 
+//create login 
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
@@ -72,7 +73,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-// PUT /api/users/1
+// PUT update user
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   
