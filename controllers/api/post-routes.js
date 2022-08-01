@@ -5,7 +5,7 @@ const sequelize = require('../../config/connection');
 //get all posts
 router.get('/', (req, res) => {
     Post.findAll({
-      order: [['created_at', 'DESC']],
+    
         attributes: [
           'id', 
           'post_url', 
@@ -28,7 +28,11 @@ router.get('/', (req, res) => {
           }
         ]
       })
-        .then(dbPostData => res.json(dbPostData))
+        .then(dbPostData => {
+          //pass a single post object into the homepage template
+          const posts = dbPostData.map(post => post.get({plain:true}));
+          res.render('homepage', {posts});
+        })
         .catch(err => {
           console.log(err);
           res.status(500).json(err);
