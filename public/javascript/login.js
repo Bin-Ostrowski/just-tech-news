@@ -23,7 +23,7 @@ async function loginFormHandler(event) {
     //check the response status
     if(response.ok) {
       //is this a mistake in the code? because it doesnt work with it. 
-      document.location.replace('/');
+      document.location.replace('/dashboard');
       console.log('sucessful login');
     } else {
       alert(response.statusText);
@@ -57,7 +57,7 @@ async function signupFormHandler(event) {
 
       //check the response status
       if(response.ok) {
-          document.location.replace('/');
+          document.location.replace('/dashboard');
           console.log('successful signup');
       } else {
         alert(response.statusText);
